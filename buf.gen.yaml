@@ -1,0 +1,9 @@
+# /proto/buf.gen.yaml
+version: v1
+plugins:
+  - name: es
+    opt: target=ts
+    out: src/proto
+  - plugin: connect-es
+    opt: target=ts
+    out: src/proto
