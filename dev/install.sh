@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln_folder="/Users/severinbuhler/.polar/networks/3/volumes/c-lightning/alice/lightningd"
+ln_folder="/Users/severinbuhler/.polar/networks/3/volumes/c-lightning/bob/lightningd"
 target_folder="$ln_folder/cln-jit-proto"
 
 plugins_path="$ln_folder/plugins"
