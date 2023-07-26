@@ -3,6 +3,7 @@ import { IInitOptions2305 } from "./IInitOptions2305";
 import { IManifestResponse2305 } from "./IManifestResponse2305";
 import { createPluginLogger } from "../logger/logger";
 import pino from 'pino'
+import { EventEmitter } from 'node:events';
 
 
 export interface IAddRpcMethodOptions {
@@ -32,6 +33,7 @@ export class ClnPlugin {
     public server = new JSONRPCServer()
     public allowDeprecatedApis: boolean
     public logger: pino.Logger
+    private onInitEmitter = new EventEmitter();
     constructor(public manifest: Partial<IManifestResponse2305> = {}, loggingFilePath: string = 'clnPluginLog.txt') {
         this.logger = createPluginLogger(loggingFilePath)
 
@@ -47,7 +49,18 @@ export class ClnPlugin {
         })
         this.server.addMethod('init', (args) => {
             this.options = args
+            this.onInitEmitter.emit('init')
             return {}
+        })
+    }
+
+    /**
+     * Subscribe on the init event.
+     * @param run Method to execute.
+     */
+    onInit(run: (options: IInitOptions2305) => any) {
+        this.onInitEmitter.on('init', async () => {
+            await run(this.options)
         })
     }
 

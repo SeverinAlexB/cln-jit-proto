@@ -23,6 +23,6 @@ npm run build
 cd -
 
 echo Copy plugin entry file
-mkdir $plugins_path
+mkdir -p $plugins_path
 cp ./dev/cln-jit-proto.sh $plugins_path
 echo Done

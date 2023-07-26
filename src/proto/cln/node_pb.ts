@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Amount, AmountOrAll, AmountOrAny, ChannelSide, ChannelState, Feerate, HtlcState, Outpoint, OutputDesc, RoutehintList, TlvStream } from "./primitives_pb.js";
+import { Amount, AmountOrAll, AmountOrAny, ChannelSide, ChannelState, Feerate, HtlcState, Outpoint, OutputDesc, RoutehintList, TlvStream } from "./primitives_pb";
 
 /**
  * @generated from message cln.GetinfoRequest
